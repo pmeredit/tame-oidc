@@ -155,7 +155,8 @@ scope=openid+offline_access",
     dbg!(&access_token);
     let refresh_token = access_token.refresh_token.unwrap();
     let id_token = access_token.id_token.unwrap();
-    dbg!(&id_token);
+    let id_token_data = provider::verify_token::<Claims>(&id_token, &jwks.keys);
+    dbg!(&id_token_data);
 
     // 5. Refresh token
     let request = provider
