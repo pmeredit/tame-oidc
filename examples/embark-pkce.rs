@@ -2,6 +2,7 @@
 
 use bytes::Bytes;
 use http::Request;
+use open;
 use rand::rngs::ThreadRng;
 use rand::RngCore;
 use reqwest::Url;
@@ -117,9 +118,10 @@ response_type=code&\
 client_id={client_id}&\
 redirect_uri={redirect_uri}&\
 state={state_str}&\
-scope=openid+offline",
+scope=offline_access",
     );
     println!("Authorize at {authorize_url}");
+    //open::that(authorize_url).unwrap();
 
     let auth_code = listener(host, port).await;
     println!("Listener closed down");

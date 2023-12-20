@@ -24,7 +24,7 @@ pub struct Provider {
     pub scopes_supported: Vec<String>,
     pub response_types_supported: Vec<String>,
     pub claims_supported: Vec<String>,
-    pub grant_types_supported: Vec<String>,
+    pub grant_types_supported: Option<Vec<String>>,
 }
 
 impl Provider {
