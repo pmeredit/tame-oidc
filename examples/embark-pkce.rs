@@ -118,7 +118,7 @@ response_type=code&\
 client_id={client_id}&\
 redirect_uri={redirect_uri}&\
 state={state_str}&\
-scope=oidc+offline_access",
+scope=openid+offline_access",
     );
     println!("Authorize at {authorize_url}");
     //open::that(authorize_url).unwrap();
