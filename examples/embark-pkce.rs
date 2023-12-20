@@ -120,8 +120,8 @@ redirect_uri={redirect_uri}&\
 state={state_str}&\
 scope=openid+offline_access",
     );
-    println!("Authorize at {authorize_url}");
-    //open::that(authorize_url).unwrap();
+    //println!("Authorize at {authorize_url}");
+    open::that(authorize_url).unwrap();
 
     let auth_code = listener(host, port).await;
     println!("Listener closed down");
@@ -154,6 +154,8 @@ scope=openid+offline_access",
     dbg!(&token_data);
     dbg!(&access_token);
     let refresh_token = access_token.refresh_token.unwrap();
+    let id_token = access_token.id_token.unwrap();
+    dbg!(&id_token);
 
     // 5. Refresh token
     let request = provider
